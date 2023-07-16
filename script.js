@@ -1,140 +1,158 @@
 // Задание 1
 
-// Задайте в коде переменную n с числовым значением.
+// Просмотрите в консоли браузера объект navigator. Найдите информацию о своем браузере, системе.
 
-// С помощью логического И в условии проверьте, находится ли переменная n в диапазоне чисел от 0 до 100 включительно.
+// Просмотрите в консоли браузера объект location. Найдите в этом объекте текущий url, где вы находитесь.
 
-// let n = 30;
+// Выведите в консоль строку:
 
-// if (n >= 0 && n <= 100){
-//     console.log("Переменная n находится в диапазоне от 0 до 100");
-// } 
+// На компьютере с ОС ... с помощью браузера ... я открыл страничку ... 
 
-// Задание 2
+// (необходимые значения добавьте с помощью BOM)
 
-// Дан объект с именами и заработными платами:
-// const engineers = {
-// Den: 1000,
-// Matt: 5000,
-// Steve: 2000
+// console.log(navigator.userAgent);
+
+// console.log(location.href);
+
+// console.log('На компьютере с ОС', 'с помощью браузера', navigator.userAgent, 'я открыл страничку', location.href);
+
+
+// В файле html есть разметка (добавьте ее в свой файл html):
+
+/* <ul id="list">
+<li>Джон</li>
+<li>Пит</li>
+<li>Джессика</li>
+<li>Сара</li>
+</ul> */
+
+// 2.1. Вывести в консоль каждое из имен (содержимое каждого li).
+
+// 2.2. Поменять имена в списке выше на числа от 0 по порядку (0, 1, 2 и т.д.)
+
+// const listItems = document.querySelectorAll('#list li');
+// for (let i = 0; i < listItems.length; i++){
+//     console.log(listItems[i].textContent);
 // }
-// Вывести в консоль через шаблонные строки заработную плату всех работников в таком формате:
 
-// Заработная плата ххх составляет ххх рублей.
+// let listItems = document.querySelectorAll('#list li');
+// for (var i = 0; i < listItems.length; i++) {
+//     console.log(listItems[i].textContent = i);
+// }
 
-// ВНИМАНИЕ. Ваша программа должна работать для любого количества имён и зарплат!
+// Задание 3
 
-// const engineers = {
-//     Den: 1000,
-//     Matt: 5000,
-//     Steve: 2000
-//     }
+// Добавить к нескольким тегам на странице класс "forRemove". Далее написать JS код, который найдет в HTML все элементы с классом "forRemove" и удалит их.
 
-//     for(let key in engineers){
-// console.log(`Заработная плата ${key} оставляет ${engineers[key]} рублей`);
-//     }
+// const elementsRemove = document.querySelectorAll('.forRemove');
+// console.log(elementsRemove);
+
+
+// elementsRemove.remove();
+
+// Задание 4
+
+// Создать с помощью js абзац (тег p). Добавить в него контент. Добавить к нему стили: размер 36px, жирный шрифт. Добавить абзац с текстом на страницу.
+
+// const paragraph = document.createElement('p');
+// paragraph.textContent = ('Hello');
+// paragraph.style.fontSize = ('36px');
+// paragraph.style.fontWeight = ('bolt');
+// document.body.appendChild(paragraph);
 
 
 // Задание 5
-
-// Дан массив объектов, например:
-
-// let questions = [{
-//     question: "What's the currency of the USA?",
-//     choices: ["US dollar", "Ruble", "Horses", "Gold"],
-//     corAnswer: 0
-// }, {
-//     question: "Where was the American Declaration of Independence signed?",
-//     choices: ["Philadelphia", "At the bottom", "Frankie's Pub", "China"],
-//     corAnswer: 0
-// }];
-
-// Добавить в каждый объект дополнительное поле usersAnswer со значением null.
-
-// Решение должно работать для массива любой длины.
+// Написать функцию, которая принимает на вход 3 параметра: название тега, название цвета, содержимое. Функция должна сформировать необходимый тег, добавить необходимый стиль с цветом и внести содержимое. Вывести несколько таких сгенерированных тегов в консоль, затем отправить их на страницу.
 
 
+// function tagName (tag, color, content){
+//     const item = document.createElement(tag);
+//     item.style.color = color;
+//     item.textContent = content;
+//     console.log(item);
+//     document.body.appendChild(item);
+
+// }
+
+// tagName('h1', 'yelow', 'Заголовок 1');
+// tagName('p', 'red', 'Параграф');
 
 
+// Задание 6
+// Вставить в страницу (в html документ) тег <select>. С помощью js (в цикле) добавить в этот select опции (option) под годы от 1960 по 2020.
+
+// const select = document.querySelector('select');
+// for (let year = 1960; year <= 2020; year++) {
+//     let option = document.createElement('option');
+//     option.value = year;
+//     option.textContent = year;
+//     select.appendChild(option);
+//   }
+
+// Задание 7
+
+// Вставить в страницу (в html документ) ul.
+// Предусмотреть в коде следующий массив:
+
+// Перебирать массив, для каждого элемента массива создать li, наполнить li текстом:
+// - Клиент Женя оплатил заказ
+// - Клиент Павел отменил заказ
+// ... остальные li с контентом
 
 
+// Маска получается такой: "Клиент ИМЯ СТАТУС заказ", где имя - свойство объекта (а объект здесь - это текущая ячейка массива), статус зависит от от свойства order: если true – то оплатил, если false – то отменил.
+
+
+// const clients = [
+
+// {name: "Женя", order: true},
+// {name: "Кристина", order: true},
+// {name: "Павел", order: false},
+// {name: "Виолетта", order: false},
+// {name: "Костя", order: true}
+
+// ]
+
+// const ordersUl = document.querySelector('ul');
+
+// clients.forEach(item => {
+//     const li = document.createElement('li');
+//     const status = item.order ? 'оплатил' : 'отменил';
+//     li.textContent = `Клиент ${item.name} ${status} заказ`;
+//     ordersUl.appendChild(li);
+
+// })
 
 
 // Задание 8
 
-// Определить массив, например let nums = [5, 4, 3, 8, 0] и переменную let limit = 5;
+// Есть массив ссылок:
 
-// Создать новый пустой массив. В цикле наполнить его элементами nums, но в новом должны содержаться элементы, больше и равные (>=) значению переменной limit.
+// let linksArr = ['https://www.amazon.com/', 'https://www.youtube.com/', 'https://devby.io/', 'https://www.google.com/', 'https://apple.com/'];
 
-// let nums = [5, 4, 3, 8, 0];
-// let limit = 5;
-// let newArray = [];
+// Вам нужно:
 
-// for (let element of nums) {
-//   if (element >= limit) {
-//     newArray.push(element);
-//   }
+// 1) при помощи JS создать DIV, задать ему css стили (фон, паддинги)
+
+// 2) при помощи цикла пройтись по массиву 'linksArr', для каждого из элементов массива сформировать ссылку (тег
+// c атрибутом href и текстом из массива) и добавить эту ссылку в созданный DIV из пункта 1
+// При нажатии на ссылки адреса должны открываться в новой вкладке (атрибут target="_blank")
+
+// 3) Добавить DIV из пункта 1 (со ссылками внутри ) в BODY
+
+// let linksArr = ['https://www.amazon.com/', 'https://www.youtube.com/', 'https://devby.io/', 'https://www.google.com/', 'https://apple.com/'];
+
+// const div = document.createElement('div');
+// div.style.backgroundColor = 'yellow';
+// div.style.padding = '10px';
+
+
+// for (let i = 0; i < linksArr.length; i++){
+// let link = document.createElement('a');
+// link.href = linksArr[i];
+//   link.textContent = linksArr[i];
+//   link.target = '_blank';
+//   div.appendChild(link);
 // }
 
-// console.log(newArray);
-
-// Задание 9
-
-// Существует массив объектов, описывающих пользователей, например:
-// const users = [{name: 'Vasya', age: 23}, {name: 'Olya', age: 12}, {name: 'Anna', age: 22}, {name: 'Alex', age: 18}, {name: 'Valery', age: 8}]
-
-// Пройти в цикле по массиву и вывести имена всех пользователей, возраст которых больше 15.
-
-// const users = [{name: 'Vasya', age: 23}, {name: 'Olya', age: 12}, {name: 'Anna', age: 22}, {name: 'Alex', age: 18}, {name: 'Valery', age: 8}];
-
-// for(const element of users){
-// if (element.age > 15){
-//     console.log(element.name);
-// }
-// }
-
-// Задание 10
-
-// Задать массив слов. Например:
-
-// let vegetables = ["морковь", "баклажан", "репа", "топинамбур"];
-
-// 1) Создать новый массив. С помощью цикла наполнить его объектами с ключами word (само слово), length (длина слова):
-
-// [{word:'морковь', length: 7}, {word:'баклажан', length: 8} и т.п.]
-
-// Вывести этот массив в консоль.
-
-// Подсказка: длину строки можно определить с помощью метода .length. Например, для переменной let string = 'text' это будет string.length (результат - 4, т.к. слово text состоит из 4 символов)
-
-// 2) Пройтись по полученному массиву объектов и вывести в консоль строки вида "слово - длина_слова", например "картошка - 8"
-
-
-// let vegetables = ["морковь", "баклажан", "репа", "топинамбур"];
-// let newArray = [];
-
-// for (let i = 0; i < vegetables.length; i++) {
-//     let word = vegetables[i];
-//     let length = word.length;
-//     newArray.push({ word: word, length: length });
-//   }
-
-// console.log(newArray);
-
-// for (let i = 0; i < newArray.length; i++) {
-//   let obj = newArray[i];
-//   console.log(`${obj.word} - ${obj.length}`);
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
+// document.body.appendChild(div);
