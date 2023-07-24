@@ -1,158 +1,61 @@
-// Задание 1
+// 1) Задать объект с полем name.
 
-// Просмотрите в консоли браузера объект navigator. Найдите информацию о своем браузере, системе.
+// Задать переменную, которая будет хранить JSON упомянутого объекта.
 
-// Просмотрите в консоли браузера объект location. Найдите в этом объекте текущий url, где вы находитесь.
+// Задать переменную, которая будет хранить результат парсинга предыдущей переменной.
 
-// Выведите в консоль строку:
-
-// На компьютере с ОС ... с помощью браузера ... я открыл страничку ... 
-
-// (необходимые значения добавьте с помощью BOM)
-
-// console.log(navigator.userAgent);
-
-// console.log(location.href);
-
-// console.log('На компьютере с ОС', 'с помощью браузера', navigator.userAgent, 'я открыл страничку', location.href);
+// let obj = {
+//     name: "misha"
+//   };
+  
+//   let json = JSON.stringify(obj);
+  
+//   let parsed = JSON.parse(json);
+  
+//   console.log(parsed); 
 
 
-// В файле html есть разметка (добавьте ее в свой файл html):
+// 1.2) Создать переменную user, в которой хранится объект.
 
-/* <ul id="list">
-<li>Джон</li>
-<li>Пит</li>
-<li>Джессика</li>
-<li>Сара</li>
-</ul> */
+// Записать переменную в localStorage.
 
-// 2.1. Вывести в консоль каждое из имен (содержимое каждого li).
+// Создать переменную newUser, в которой будет храниться JS объект из localStorage.
 
-// 2.2. Поменять имена в списке выше на числа от 0 по порядку (0, 1, 2 и т.д.)
-
-// const listItems = document.querySelectorAll('#list li');
-// for (let i = 0; i < listItems.length; i++){
-//     console.log(listItems[i].textContent);
-// }
-
-// let listItems = document.querySelectorAll('#list li');
-// for (var i = 0; i < listItems.length; i++) {
-//     console.log(listItems[i].textContent = i);
-// }
-
-// Задание 3
-
-// Добавить к нескольким тегам на странице класс "forRemove". Далее написать JS код, который найдет в HTML все элементы с классом "forRemove" и удалит их.
-
-// const elementsRemove = document.querySelectorAll('.forRemove');
-// console.log(elementsRemove);
+// let user = {
+//   name: "misha"
+//   };
+  
+//   localStorage.setItem('user', JSON.stringify(user));
+  
+//   let newUser = JSON.parse(localStorage.getItem('user'));
+  
+//   console.log(newUser); 
 
 
-// elementsRemove.remove();
-
-// Задание 4
-
-// Создать с помощью js абзац (тег p). Добавить в него контент. Добавить к нему стили: размер 36px, жирный шрифт. Добавить абзац с текстом на страницу.
-
-// const paragraph = document.createElement('p');
-// paragraph.textContent = ('Hello');
-// paragraph.style.fontSize = ('36px');
-// paragraph.style.fontWeight = ('bolt');
-// document.body.appendChild(paragraph);
 
 
-// Задание 5
-// Написать функцию, которая принимает на вход 3 параметра: название тега, название цвета, содержимое. Функция должна сформировать необходимый тег, добавить необходимый стиль с цветом и внести содержимое. Вывести несколько таких сгенерированных тегов в консоль, затем отправить их на страницу.
+// Задание 2 Создать в html форму с инпутом и кнопкой. Также добавить в html тег ul. Когда форма отправляется, добавлять в список тег li. Его содержимое - введенный текст (input.value). После отправки формы инпут должен быть очищен (проставить пустую строку в value).
 
 
-// function tagName (tag, color, content){
-//     const item = document.createElement(tag);
-//     item.style.color = color;
-//     item.textContent = content;
-//     console.log(item);
-//     document.body.appendChild(item);
+// document.querySelector('form').addEventListener('submit', function(e) {
+//   e.preventDefault();
 
-// }
+//   let inputValue = document.querySelector('input').value;
 
-// tagName('h1', 'yelow', 'Заголовок 1');
-// tagName('p', 'red', 'Параграф');
+//   let li = document.createElement('li');
 
+//   li.textContent = inputValue;
 
-// Задание 6
-// Вставить в страницу (в html документ) тег <select>. С помощью js (в цикле) добавить в этот select опции (option) под годы от 1960 по 2020.
+//   document.querySelector('ul').appendChild(li);
 
-// const select = document.querySelector('select');
-// for (let year = 1960; year <= 2020; year++) {
-//     let option = document.createElement('option');
-//     option.value = year;
-//     option.textContent = year;
-//     select.appendChild(option);
-//   }
-
-// Задание 7
-
-// Вставить в страницу (в html документ) ul.
-// Предусмотреть в коде следующий массив:
-
-// Перебирать массив, для каждого элемента массива создать li, наполнить li текстом:
-// - Клиент Женя оплатил заказ
-// - Клиент Павел отменил заказ
-// ... остальные li с контентом
+//   document.querySelector('input').value = '';
+// });
 
 
-// Маска получается такой: "Клиент ИМЯ СТАТУС заказ", где имя - свойство объекта (а объект здесь - это текущая ячейка массива), статус зависит от от свойства order: если true – то оплатил, если false – то отменил.
 
+// Задание 3 Добавить в таск-менеджер сохранение задач между перезагрузками страницы.
 
-// const clients = [
+// localStorage.saveItem('tasks', JSON.stringify(tasks));
 
-// {name: "Женя", order: true},
-// {name: "Кристина", order: true},
-// {name: "Павел", order: false},
-// {name: "Виолетта", order: false},
-// {name: "Костя", order: true}
+// let savedTasks = JSON.parse(localStorage.getItem('tasks'));
 
-// ]
-
-// const ordersUl = document.querySelector('ul');
-
-// clients.forEach(item => {
-//     const li = document.createElement('li');
-//     const status = item.order ? 'оплатил' : 'отменил';
-//     li.textContent = `Клиент ${item.name} ${status} заказ`;
-//     ordersUl.appendChild(li);
-
-// })
-
-
-// Задание 8
-
-// Есть массив ссылок:
-
-// let linksArr = ['https://www.amazon.com/', 'https://www.youtube.com/', 'https://devby.io/', 'https://www.google.com/', 'https://apple.com/'];
-
-// Вам нужно:
-
-// 1) при помощи JS создать DIV, задать ему css стили (фон, паддинги)
-
-// 2) при помощи цикла пройтись по массиву 'linksArr', для каждого из элементов массива сформировать ссылку (тег
-// c атрибутом href и текстом из массива) и добавить эту ссылку в созданный DIV из пункта 1
-// При нажатии на ссылки адреса должны открываться в новой вкладке (атрибут target="_blank")
-
-// 3) Добавить DIV из пункта 1 (со ссылками внутри ) в BODY
-
-// let linksArr = ['https://www.amazon.com/', 'https://www.youtube.com/', 'https://devby.io/', 'https://www.google.com/', 'https://apple.com/'];
-
-// const div = document.createElement('div');
-// div.style.backgroundColor = 'yellow';
-// div.style.padding = '10px';
-
-
-// for (let i = 0; i < linksArr.length; i++){
-// let link = document.createElement('a');
-// link.href = linksArr[i];
-//   link.textContent = linksArr[i];
-//   link.target = '_blank';
-//   div.appendChild(link);
-// }
-
-// document.body.appendChild(div);
